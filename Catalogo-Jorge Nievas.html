@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación de Servicios Profesionales</title>
+    <!-- Iconos Lucide para diseño dinámico -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --azul-oscuro: #0B192C;
+            --azul-medio: #1E3E62;
+            --dorado: #FFD700;
+            --dorado-suave: #F1C40F;
+            --blanco: #FFFFFF;
+            --gris-claro: #F5F7F8;
+            --texto-oscuro: #333333;
+        }
+
+        body {
+            background-color: #000000;
+            color: var(--texto-oscuro);
+        }
+
+        /* Contenedor de Slides optimizado para Scroll Móvil */
+        .presentation-container {
+            width: 100%;
+            max-width: 480px; /* Tamaño ideal para simular pantalla móvil */
+            margin: 0 auto;
+            background-color: var(--blanco);
+        }
+
+        .slide {
+            width: 100%;
+            min-height: 100vh;
+            padding: 40px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+
+        /* Títulos Globales */
+        .slide-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- SLIDE 1: PORTADA --- */
+        #slide1 {
+            background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 100%);
+            color: var(--blanco);
+            text-align: center;
+            align-items: center;
+        }
+        #slide1 h1 {
+            font-size: 2rem;
+            color: var(--dorado);
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+        }
+        #slide1 p {
+            font-size: 1.2rem;
+            color: var(--gris-claro);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        .badge-fb {
+            background-color: #1877F2;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 1.9rem;
+            margin-bottom: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* --- SLIDE 2: TRANSICIÓN / CATÁLOGO --- */
+        #slide2 {
+            background-color: var(--azul-medio);
+            color: var(--blanco);
+        }
+        #slide2 .slide-title {
+            color: var(--dorado);
+        }
+        .catalog-list {
+            list-style: none;
+        }
+        .catalog-item {
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 12px;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-left: 4px solid var(--dorado);
+        }
+
+        /* --- SLIDE 3: AMPLIACIONES (BLEED IMAGE) --- */
+        #slide3 {
+            padding: 0;
+            background-color: var(--azul-oscuro);
+            color: var(--blanco);
+            justify-content: flex-end;
+        }
+        .bleed-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+        }
+        .bleed-content {
+            position: relative;
+            z-index: 2;
+            padding: 40px 24px;
+            background: linear-gradient(to top, var(--azul-oscuro) 70%, transparent 100%);
+        }
+        .bleed-content h2 {
+            color: var(--dorado);
+        }
+
+        /* --- SLIDE 4: ESPECIALIDADES (TILES) --- */
+        #slide4 {
+            background-color: var(--gris-claro);
+        }
+        #slide4 .slide-title {
+            color: var(--azul-oscuro);
+        }
+        .tiles-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        .tile {
+            background: var(--blanco);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--azul-medio);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .tile i {
+            color: var(--azul-medio);
+        }
+        .tile h3 {
+            font-size: 1.3rem;
+            color: var(--azul-oscuro);
+        }
+
+        /* --- SLIDE 5: COBERTIZOS Y TERRAZAS --- */
+        #slide5 {
+            background-color: var(--blanco);
+            padding: 0;
+        }
+        .half-banner {
+            width: 100%;
+            height: 40vh;
+            object-fit: cover;
+        }
+        .slide5-content {
+            padding: 30px 24px;
+        }
+        .slide5-content h2 {
+            color: var(--azul-oscuro);
+        }
+
+        /* --- SLIDE 6: PINTURA Y TERMINACIONES --- */
+        #slide6 {
+            background-color: var(--azul-oscuro);
+            color: var(--blanco);
+        }
+        #slide6 .slide-title {
+            color: var(--dorado);
+        }
+        .elegant-bullets {
+            margin-top: 20px;
+        }
+        .bullet-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 24px;
+            font-size: 1.1rem;
+        }
+        .bullet-point i {
+            color: var(--dorado);
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        /* --- SLIDE 7: ¿POR QUÉ ELEGIRNOS? --- */
+        #slide7 {
+            background-color: var(--gris-claro);
+            text-align: center;
+        }
+        .huge-number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--azul-oscuro);
+            line-height: 1;
+            margin: 20px 0;
+        }
+        .huge-number span {
+            color: #2ECC71; /* Verde éxito para contraste seguro */
+        }
+        .security-box {
+            background: var(--blanco);
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px dashed var(--azul-medio);
+            margin-top: 15px;
+        }
+
+        /* --- SLIDE 8: CIERRE Y CTA INTERACTIVO --- */
+        #slide8 {
+            background: linear-gradient(135deg, var(--azul-medio) 0%, var(--azul-oscuro) 100%);
+            color: var(--blanco);
+            text-align: center;
+        }
+        .cta-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--dorado);
+            padding: 30px 20px;
+            border-radius: 16px;
+            margin-top: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        .cta-box h3 {
+            font-size: 1.5rem;
+            color: var(--dorado);
+            margin-bottom: 10px;
+        }
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: transform 0.2s;
+        }
+        .btn-messenger {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background-color: #0084FF;
+            color: white;
+            text-decoration: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="presentation-container">
+
+        <!-- Slide 1: Portada de Alto Impacto -->
+        <section class="slide" id="slide1">
+            <div class="badge-fb">
+                <i data-lucide="facebook"></i> JORGE NIEVAS
+            </div>
+            <h1>CONSTRUCCIÓN Y REMODELACIÓN PROFESIONAL</h1>
+            <p>Transformamos tus espacios con la confianza y seriedad que buscas.</p>
+            <i data-lucide="chevron-down" style="color: var(--dorado); animation: bounce 2s infinite; margin-top: 20px;"></i>
+        </section>
+
+        <!-- Slide 2: Diapositiva de Transición / Catálogo -->
+        <section class="slide" id="slide2">
+            <h2 class="slide-title">Nuestro Catálogo de Servicios</h2>
+            <p style="margin-bottom: 25px; opacity: 0.9;">Soluciones integrales para el hogar y proyectos comerciales ejecutados por expertos.</p>
+            <ul class="catalog-list">
+                <li class="catalog-item"><i data-lucide="wrench"></i> Ampliaciones y Remodelaciones</li>
+                <li class="catalog-item"><i data-lucide="droplet"></i> Especialidades Técnicas</li>
+                <li class="catalog-item"><i data-lucide="home"></i> Cobertizos y Terrazas</li>
+                <li class="catalog-item"><i data-lucide="paint-bucket"></i> Pintura y Terminaciones</li>
+            </ul>
+        </section>
+
+        <!-- Slide 3: Ampliaciones y Remodelaciones (Bleed Image) -->
+        <section class="slide" id="slide3">
+            <!-- Imagen en Alta Fidelidad integrada en la estructura -->
+            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="Construcción de Interiores" class="bleed-image">
+            <div class="bleed-content">
+                <h2 class="slide-title">Ampliaciones y Remodelaciones</h2>
+                <p>Maximizamos cada metro cuadrado de tu propiedad. Proyectos estructurales, planos y ejecución limpia con acabados de primera calidad.</p>
+            </div>
+        </section>
+
+        <!-- Slide 4: Especialidades Técnicas (Tiles Grid) -->
+        <section class="slide" id="slide4">
+            <h2 class="slide-title">Especialidades Técnicas</h2>
+            <div class="tiles-grid">
+                <div class="tile">
+                    <i data-lucide="pipette" style="width: 32px; height: 32px;"></i>
+                    <h3>Gafitería</h3>
+                    <p>Instalaciones, reparación de filtraciones y mantenimiento de redes de agua.</p>
+                </div>
+                <div class="tile">
+                    <i data-lucide="zap" style="width: 32px; height: 32px;"></i>
+                    <h3>Electricidad</h3>
+                    <p>Proyectos eléctricos, cableado seguro y normativo para todo el hogar.</p>
+                </div>
+                <div class="tile">
+                    <i data-lucide="grid" style="width: 32px; height: 32px;"></i>
+                    <h3>Cerámica</h3>
+                    <p>Instalación de porcelanatos, revestimientos y pisos de alta precisión.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: Cobertizos y Terrazas -->
+        <section class="slide" id="slide5">
+            <!-- Espectacular imagen de pérgola moderna -->
+            <img src="https://cl.habcdn.com/photos/business/big/tablillas-088-120803.jpg?auto=format&fit=crop&w=800&q=80" alt="Pérgola de madera moderna" class="half-banner">
+            <div class="slide5-content">
+                <h2 class="slide-title">Cobertizos y Terrazas</h2>
+                <p>Diseñamos tu espacio exterior ideal. Pérgolas de madera fina, estructuras modernas y terrazas diseñadas para disfrutar todo el año protegiendo tu hogar del clima.</p>
+            </div>
+        </section>
+
+        <!-- Slide 6: Pintura y Terminaciones -->
+        <section class="slide" id="slide6">
+            <h2 class="slide-title">Pintura y Terminaciones</h2>
+            <div class="elegant-bullets">
+                <div class="bullet-point">
+                    <i data-lucide="check-circle-2"></i>
+                    <div>
+                        <strong>Limpieza Absoluta:</strong> Cuidamos tus pisos y muebles protegiendo todo el entorno antes de iniciar.
+                    </div>
+                </div>
+                <div class="bullet-point">
+                    <i data-lucide="shield-check"></i>
+                    <div>
+                        <strong>Máxima Durabilidad:</strong> Utilizamos selladores y pinturas de excelencia resistentes al paso del tiempo.
+                    </div>
+                </div>
+                <div class="bullet-point">
+                    <i data-lucide="sparkles"></i>
+                    <div>
+                        <strong>Materiales Premium:</strong> Acabados perfectos sin imperfecciones visibles, listos para lucir.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: ¿Por qué Elegirnos? -->
+        <section class="slide" id="slide7">
+            <h2 class="slide-title">¿Por qué Elegirnos?</h2>
+            <p>Olvídate de la informalidad de las redes sociales. Nosotros te entregamos respaldo real.</p>
+            <div class="huge-number">100%<span>Garantizado</span></div>
+            <div class="security-box">
+                <p><strong>Cero Riesgos:</strong> Todo proyecto se respalda bajo presupuesto cerrado y plazos de entrega estrictos.</p>
+            </div>
+        </section>
+
+        <!-- Slide 8: Diapositiva de Cierre / CTA -->
+        <section class="slide" id="slide8">
+            <h2 class="slide-title">¡Haz Realidad tu Proyecto hoy!</h2>
+            <p>No dejes tu hogar en manos de cualquiera. Consulta con profesionales.</p>
+            
+            <div class="cta-box">
+                <h3>¿Listo para empezar?</h3>
+                <p>Solicita tu presupuesto completamente gratis y sin compromisos.</p>
+                
+                <a href="https://wa.me/56950015203?text=Hola,%20solicito%20cotizacion%20por%20un%20servicio" class="btn-whatsapp">
+                    <i data-lucide="message-square"></i> Cotizar por WhatsApp
+                </a>
+                <a href="https://www.facebook.com/jorgee.nievas" class="btn-messenger">
+                    <i data-lucide="facebook"></i> Mensaje Interno
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Inicialización de los Iconos Dinámicos -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
